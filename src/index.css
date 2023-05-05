@@ -1,3 +1,46 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&family=Open+Sans:wght@400;600');
+
+
+@layer components {
+  .page {
+    @apply max-w-[100%] flex flex-col px-[50px] py-[40px];
+  }
+  /* titles */
+  .title-1 {
+    @apply font-bold text-[36px];
+  }
+
+}
+
+@layer base {
+  body {
+      @apply font-opensans bg-slate-400;
+  }
+}
+
+:root {
+  /* colors */
+  --default-color: #202020;
+}
+
+.header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.card {
+  width: 276px;
+  height: 359px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
+  border-radius: 14px;
+  background: #FFFFFF;
+}
+
+

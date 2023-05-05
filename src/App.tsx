@@ -1,8 +1,17 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import ContactsPage from './pages/ContactsPage/ContactsPage';
+import ContactsFormPage from './pages/ContactFormPage/ContactsFormPage';
+
 
 function App() {
   return (
     <div>
-      <h1 className="text-3xl font-bold underline text-blue-400">Hello world!</h1>
+      <Router>
+        <Routes>
+          <Route path='/' element={<ContactsPage />} />
+          <Route path='/contact-form' element={<ContactsFormPage />} />
+        </Routes>
+      </Router>
     </div>
   );
 }

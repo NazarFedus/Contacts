@@ -5,7 +5,15 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      cairo: ['Сairo', 'sans-serif'],
+      opensans: ["Open Sans", 'sans-serif'],
+     },
+    extend: {
+      colors: {
+        'default-text': 'var(--default-color)'
+      }
+    },
   },
   plugins: [],
 }
