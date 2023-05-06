@@ -15,6 +15,14 @@
     @apply font-bold text-[36px];
   }
 
+  .save{
+    @apply bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded focus:outline-none;
+  }
+  .cancel {
+    @apply bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded focus:outline-none;
+  }
+
+
 }
 
 @layer base {

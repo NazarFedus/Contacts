@@ -1,5 +1,5 @@
-import React, { FC, useEffect, useState, useReducer } from "react";
-import axios, { AxiosError } from "axios";
+import { FC, useEffect, useReducer } from "react";
+import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { reducer, initialState } from "../../reducers/context";
 
