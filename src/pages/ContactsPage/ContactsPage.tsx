@@ -1,15 +1,25 @@
-import React, { FC, useEffect, useState } from "react";
+import React, { FC, useEffect, useState, useReducer } from "react";
+import axios, { AxiosError } from "axios";
+import { NavLink } from "react-router-dom";
+import { reducer, initialState } from "../../reducers/context";
+
+import { IContact } from "../../components/ContactCard/ContactCardTypes";
+import ContactCard from "../../components/ContactCard/ContactCard";
 
 import search from "./icons/search 2.svg";
 import action1 from "./icons/action1.svg";
 import action2 from "./icons/action2.svg";
 import contact from "./icons/contact_action.svg";
-import axios from "axios";
-import { IContact } from "../../components/ContactCard/ContactCardTypes";
-import ContactCard from "../../components/ContactCard/ContactCard";
+import { DELETE_CONTACT } from "../../reducers/actions";
 
 const ContactsPage: FC = () => {
-  const [contacts, setContacts] = useState<IContact[]>([]);
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  console.log(state.contacts)
+
+  const clickHandler = (id: number) => {
+    dispatch({type: DELETE_CONTACT, payload: id})
+  }
 
   useEffect(() => {
     const fetchContacts = async () => {
@@ -17,17 +27,14 @@ const ContactsPage: FC = () => {
         const response = await axios.get(
           "https://jsonplaceholder.typicode.com/users"
         );
-        console.log(response);
-        setContacts(response.data);
-      } catch (e) {
+        dispatch({ type: "FETCH_SUCCESS", payload: response.data });
+      } catch (e: any) {
         console.log(e);
-        throw e;
+        dispatch({ type: "FETCH_ERROR", payload: e.message });
       }
     };
     fetchContacts();
   }, []);
-
-  console.log(contacts);
 
   return (
     <div className="page">
@@ -47,17 +54,19 @@ const ContactsPage: FC = () => {
           <button>
             <img src={action2} alt="action2" />
           </button>
-          <button className="flex flex-row items-center">
-            <img src={contact} alt="contact" />
-            New Contact
-          </button>
+          <NavLink to="/contact-form">
+            <button className="flex flex-row items-center create-btn">
+              <img src={contact} alt="contact" />
+              New Contact
+            </button>
+          </NavLink>
         </div>
       </header>
       <main className="flex flex-wrap justify-between gap-[24px] mt-[30px]">
         <div className="flex flex-wrap justify-between gap-4 sm:gap-6 md:gap-8 lg:gap-10">
-          {contacts.map((user: IContact) => (
+          {state.contacts.map((user: IContact) => (
             <div className="card-container mb-4" key={user.id}>
-              <ContactCard user={user} />
+              <ContactCard user={user} key={user.id} onDelete={clickHandler}/>
             </div>
           ))}
         </div>

@@ -37,10 +37,36 @@
 
 .card {
   width: 276px;
-  height: 359px;
+  /* height: 359px; */
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
   border-radius: 14px;
   background: #FFFFFF;
 }
 
+.info-text{
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 19px;
+  color: var(--default-color);
+}
+
+.create-btn{
+  width: 181px;
+  height: 68px;
+  background: #6418C3;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.04);
+  border-radius: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 34px;
+  color: #FFFFFF;
+}
 

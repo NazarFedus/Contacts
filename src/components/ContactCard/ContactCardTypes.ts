@@ -3,8 +3,15 @@ export interface IContact {
      name: string,
      username: string,
      email: string,
+     phone: string,
      address: IAddress,
      company: {bs: string, catchPhrase: string, name: string}
+}
+
+export interface IContactProps {
+     user: IContact,
+     key: number,
+     onDelete: (id: number) => void;
 }
 
 interface IAddress{
