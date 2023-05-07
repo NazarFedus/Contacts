@@ -1,3 +1,4 @@
+import axios from "axios";
 import { IContact } from "../components/ContactCard/ContactCardTypes";
 import { DELETE_CONTACT, FETCH_ERROR, FETCH_SUCCESS } from "./actions";
 import { IAction, IState } from "./contextTypes";
@@ -6,6 +7,16 @@ export const initialState = {
      contacts: [],
      deletedContacts: [],
      error: null
+}
+
+const deleteContact = async(id: number) => {
+     try{
+          const response = await axios.delete(`http://localhost:3000/contacts/${id}`)
+          return response.json()
+     } catch(e: any){
+          console.log(e)
+          throw new Error;
+     }
 }
 
 export const reducer = (state: IState, action: IAction): IState => {
@@ -23,6 +34,7 @@ export const reducer = (state: IState, action: IAction): IState => {
                };
           }
           case DELETE_CONTACT: {
+               deleteContact(action.payload)
                return {
                     ...state,
                     contacts: state.contacts.filter((e: IContact) => e.id !== action.payload)

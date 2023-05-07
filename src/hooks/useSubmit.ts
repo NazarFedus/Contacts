@@ -1,6 +1,5 @@
-import React, {useState} from "react";
+import {useState} from "react";
 import axios from "axios";
-import { IContact } from "../components/ContactCard/ContactCardTypes";
 import { ISubmitValues } from "../pages/ContactFormPage/ContactFormPageTypes";
 
 export function useSubmit() {
