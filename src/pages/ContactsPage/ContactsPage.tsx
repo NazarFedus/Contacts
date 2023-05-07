@@ -25,7 +25,7 @@ const ContactsPage: FC = () => {
     const fetchContacts = async () => {
       try {
         const response = await axios.get(
-          "https://jsonplaceholder.typicode.com/users"
+          "http://localhost:3000/contacts"
         );
         dispatch({ type: "FETCH_SUCCESS", payload: response.data });
       } catch (e: any) {

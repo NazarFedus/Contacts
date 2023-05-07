@@ -3,6 +3,8 @@ import { FC } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { ISubmitValues } from "./ContactFormPageTypes";
+import { NavLink } from "react-router-dom";
+import { useSubmit } from "../../hooks/useSubmit";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string()
@@ -23,16 +25,28 @@ const initialValues = {
   phone: "",
 };
 
-const onSubmit = (values: ISubmitValues) => {
-  console.log(values);
-};
+// const onSubmit = (values: ISubmitValues) => {
+//   console.log(values);
+// };
 
 const ContactsFormPage: FC = () => {
+  const {submit, response} = useSubmit();
+  console.log(response)
+
+
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={onSubmit}
+      onSubmit={async(values: ISubmitValues) => {
+      console.log(values)
+
+        await submit({
+          name: values.name,
+          email: values.email,
+          phone: values.phone
+        })
+      }}
     >
       {({
         values,
@@ -44,10 +58,10 @@ const ContactsFormPage: FC = () => {
         isSubmitting,
       }) => (
         <div className="flex mx-[25px] flex-col justify-center items-center h-[100vh]">
-          <Form className="flex flex-col" onSubmit={handleSubmit}>
+          <form className="flex flex-col" onSubmit={handleSubmit}>
             <h3>New Contact</h3>
             <label>Name:</label>
-            <Field
+            <input
               type="text"
               name="name"
               onChange={handleChange}
@@ -56,7 +70,7 @@ const ContactsFormPage: FC = () => {
             />
             {errors.name && touched.name && <ErrorMessage className="text-red" name="name" />}
             <label>Email:</label>
-            <Field
+            <input
               type="email"
               name="email"
               onChange={handleChange}
@@ -65,7 +79,7 @@ const ContactsFormPage: FC = () => {
             />
             {errors.email && touched.email && <ErrorMessage className="text-red" name="email" />}
             <label>Phone:</label>
-            <Field
+            <input
               type="text"
               name="phone"
               onChange={handleChange}
@@ -73,11 +87,13 @@ const ContactsFormPage: FC = () => {
               value={values.phone}
             />
             {errors.phone && touched.phone && <ErrorMessage className="text-red" name="phone" />}
-          </Form>
-          <div className="flex gap-3 mt-2">
-            <button className="cancel">Cancel</button>
-            <button className="save" type="submit" disabled={isSubmitting}>Save</button>
+
+            <div className="flex gap-3 mt-2">
+            <NavLink to='/'><button className="cancel">Cancel</button></NavLink>
+            <button className="save" type="submit">Save</button>
           </div>
+          </form>
+
         </div>
       )}
     </Formik>
