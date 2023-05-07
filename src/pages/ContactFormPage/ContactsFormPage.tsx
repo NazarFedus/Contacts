@@ -25,27 +25,22 @@ const initialValues = {
   phone: "",
 };
 
-// const onSubmit = (values: ISubmitValues) => {
-//   console.log(values);
-// };
-
 const ContactsFormPage: FC = () => {
-  const {submit, response} = useSubmit();
-  console.log(response)
-
+  const { submit, response } = useSubmit();
+  console.log(response);
 
   return (
     <Formik
       initialValues={initialValues}
       validationSchema={validationSchema}
-      onSubmit={async(values: ISubmitValues) => {
-      console.log(values)
+      onSubmit={async (values: ISubmitValues) => {
+        console.log(values);
 
         await submit({
           name: values.name,
           email: values.email,
-          phone: values.phone
-        })
+          phone: values.phone,
+        });
       }}
     >
       {({
@@ -58,42 +53,51 @@ const ContactsFormPage: FC = () => {
         isSubmitting,
       }) => (
         <div className="flex mx-[25px] flex-col justify-center items-center h-[100vh]">
-          <form className="flex flex-col" onSubmit={handleSubmit}>
+          <Form className="flex flex-col" onSubmit={handleSubmit}>
             <h3>New Contact</h3>
             <label>Name:</label>
-            <input
+            <Field
               type="text"
               name="name"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.name}
             />
-            {errors.name && touched.name && <ErrorMessage className="text-red" name="name" />}
+            {errors.name && touched.name && (
+              <ErrorMessage className="text-red" name="name" />
+            )}
             <label>Email:</label>
-            <input
+            <Field
               type="email"
               name="email"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.email}
             />
-            {errors.email && touched.email && <ErrorMessage className="text-red" name="email" />}
+            {errors.email && touched.email && (
+              <ErrorMessage className="text-red" name="email" />
+            )}
             <label>Phone:</label>
-            <input
+            <Field
               type="text"
               name="phone"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.phone}
             />
-            {errors.phone && touched.phone && <ErrorMessage className="text-red" name="phone" />}
+            {errors.phone && touched.phone && (
+              <ErrorMessage className="text-red" name="phone" />
+            )}
 
             <div className="flex gap-3 mt-2">
-            <NavLink to='/'><button className="cancel">Cancel</button></NavLink>
-            <button className="save" type="submit">Save</button>
-          </div>
-          </form>
-
+              <NavLink to="/">
+                <button className="cancel">Cancel</button>
+              </NavLink>
+              <button className="save" type="submit">
+                Save
+              </button>
+            </div>
+          </Form>
         </div>
       )}
     </Formik>
