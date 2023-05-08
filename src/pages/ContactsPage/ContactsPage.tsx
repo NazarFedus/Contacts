@@ -1,5 +1,5 @@
-import React, { FC, useEffect, useState, useReducer } from "react";
-import axios, { AxiosError } from "axios";
+import { FC, useEffect, useReducer } from "react";
+import axios from "axios";
 import { NavLink } from "react-router-dom";
 import { reducer, initialState } from "../../reducers/context";
 
@@ -15,8 +15,6 @@ import { DELETE_CONTACT } from "../../reducers/actions";
 const ContactsPage: FC = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  console.log(state.contacts)
-
   const clickHandler = (id: number) => {
     dispatch({type: DELETE_CONTACT, payload: id})
   }
@@ -25,7 +23,7 @@ const ContactsPage: FC = () => {
     const fetchContacts = async () => {
       try {
         const response = await axios.get(
-          "https://jsonplaceholder.typicode.com/users"
+          "http://localhost:3000/contacts"
         );
         dispatch({ type: "FETCH_SUCCESS", payload: response.data });
       } catch (e: any) {
@@ -47,7 +45,7 @@ const ContactsPage: FC = () => {
           <img src={search} alt="search" />
           <input type="text" placeholder="Search here" />
         </div>
-        <div className="flex flex-row items-center">
+        <div className="flex flex-row items-center gap-3">
           <button>
             <img src={action1} alt="action1" />
           </button>
