@@ -2,15 +2,9 @@
   "contacts": [
     {
       "name": "Nazar",
-      "email": "nazarfedus5@gmail.com",
-      "phone": "8324923894",
+      "email": "nazar3@gmail.com",
+      "phone": "+38 (050) 123 45 67",
       "id": 1
-    },
-    {
-      "name": "Zahar",
-      "email": "nazarii.fedus.ki.2021@edu.lpnu.ua",
-      "phone": "82374972398472",
-      "id": 2
     }
   ]
 }

@@ -43,6 +43,8 @@ const ContactsFormPage: FC = () => {
           email: values.email,
           phone: values.phone,
         });
+
+        navigate('/');
       }}
     >
       {({
@@ -98,22 +100,13 @@ const ContactsFormPage: FC = () => {
               <NavLink to="/">
                 <button className="cancel">Cancel</button>
               </NavLink>
-              <NavLink to="/">
                 <button
                   className='save'
                   type="submit"
                   disabled={isSubmitting}
-                  onClick={() =>
-                    submit({
-                      name: values.name,
-                      email: values.email,
-                      phone: values.phone,
-                    })
-                  }
                 >
                   Save
                 </button>
-              </NavLink>
             </div>
           </Form>
         </div>
