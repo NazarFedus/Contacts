@@ -47,7 +47,7 @@ const ContactsPage: FC = () => {
           <img src={search} alt="search" />
           <input type="text" placeholder="Search here" />
         </div>
-        <div className="flex flex-row items-center">
+        <div className="flex flex-row items-center gap-3">
           <button>
             <img src={action1} alt="action1" />
           </button>

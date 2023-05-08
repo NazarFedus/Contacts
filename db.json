@@ -1,3 +1,16 @@
 {
-  "contacts": []
+  "contacts": [
+    {
+      "name": "Nazar",
+      "email": "nazarfedus5@gmail.com",
+      "phone": "83218487234982",
+      "id": 1
+    },
+    {
+      "name": "",
+      "email": "",
+      "phone": "",
+      "id": 2
+    }
+  ]
 }

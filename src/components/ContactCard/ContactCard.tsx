@@ -20,7 +20,7 @@ const ContactCard: FC<IContactProps> = ({ user, onDelete }) => {
   }
 
   console.log(user)
-  
+
   return (
     <Card className='card'>
       <CardHeader
@@ -34,8 +34,7 @@ const ContactCard: FC<IContactProps> = ({ user, onDelete }) => {
              <DeleteIcon />
           </IconButton>
         }
-        title="Shrimp and Chorizo Paella"
-        subheader="September 14, 2016"
+        title={user.name}
       />
       <CardContent className="p-[20px]">
         <div className="flex items-center gap-[12px]">
