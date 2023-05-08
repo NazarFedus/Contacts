@@ -36,7 +36,6 @@ const ContactsFormPage: FC = () => {
       initialValues={initialValues}
       validationSchema={validationSchema}
       onSubmit={async (values: ISubmitValues) => {
-        console.log(values);
 
         await submit({
           name: values.name,

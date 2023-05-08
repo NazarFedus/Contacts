@@ -19,8 +19,6 @@ const ContactCard: FC<IContactProps> = ({ user, onDelete }) => {
     onDelete(user.id)
   }
 
-  console.log(user)
-
   return (
     <Card className='card'>
       <CardHeader

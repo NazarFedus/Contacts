@@ -15,8 +15,6 @@ import { DELETE_CONTACT } from "../../reducers/actions";
 const ContactsPage: FC = () => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  console.log(state.contacts)
-
   const clickHandler = (id: number) => {
     dispatch({type: DELETE_CONTACT, payload: id})
   }
